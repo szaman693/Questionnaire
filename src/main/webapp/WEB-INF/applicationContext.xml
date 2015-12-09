@@ -50,16 +50,17 @@
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.mycompany.mavenproject1" />
+        <property name="packagesToScan" value="com.mycompany.mavenproject1.entity" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="false" />
-                <property name="databasePlatform" value="org.hibernate.dialect.DerbyDialect" />
+                <property name="showSql" value="true" />
+                <property name="databasePlatform" value="org.hibernate.dialect.DerbyTenSevenDialect" />
             </bean>
         </property>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
             </props>
         </property>
     </bean>

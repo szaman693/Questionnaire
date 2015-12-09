@@ -6,10 +6,14 @@
 package com.mycompany.mavenproject1.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,12 +22,39 @@ import javax.persistence.Id;
 @Entity
 public class Ankieta implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="ankieta")
+    private List<Pytanie> pytania;
+
+    public Ankieta() {
+        pytania = new ArrayList<>();
+    }
+
+    
+    
+    /**
+     * Get the value of pytania
+     *
+     * @return the value of pytania
+     */
+    public List<Pytanie> getPytania() {
+        return pytania;
+    }
+
+    /**
+     * Set the value of pytania
+     *
+     * @param pytania new value of pytania
+     */
+    public void setPytania(List<Pytanie> pytania) {
+        this.pytania = pytania;
+    }
 
     public String getName() {
         return name;

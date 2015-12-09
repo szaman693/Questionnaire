@@ -9,6 +9,8 @@ import com.mycompany.mavenproject1.entity.Ankieta;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,13 +18,19 @@ import org.springframework.stereotype.Component;
  * @author ryszard.mroczka
  */
 @Component
-public class AnkietaDao {
+public class AnkietaDao {    
+    
+    private static final Logger log = LoggerFactory.getLogger(AnkietaDao.class);  
+    
 
     @PersistenceContext
     EntityManager entityManager;
 
     @Transactional
-    public void zrobCos(Ankieta ankieta) {
+    public void save(Ankieta ankieta) {
+        
+        log.info("save ankieta");
+        
         entityManager.persist(ankieta);
     }
 

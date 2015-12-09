@@ -5,6 +5,9 @@
  */
 package com.mycompany.mavenproject1.service;
 
+import com.mycompany.mavenproject1.dao.AnkietaDao;
+import com.mycompany.mavenproject1.entity.Ankieta;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,5 +16,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AnkietaService {
+    
+    @Autowired
+    AnkietaDao ankietaDao;
+
+    public void save(Ankieta ankieta) {
+        ankietaDao.save(ankieta);
+    }
+      
     
 }
