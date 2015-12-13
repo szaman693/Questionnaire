@@ -25,8 +25,18 @@ public class Pytanie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)   
+    private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Ankieta ankieta;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Get the value of ankieta
@@ -76,10 +86,9 @@ public class Pytanie implements Serializable {
 
     @Override
     public String toString() {
-        return "Pytanie{" + "id=" + id + ", ankieta=" + ankieta + '}';
+        return "Pytanie{" + "id=" + id + ", name=" + name + ", ankieta=" + ankieta + '}';
     }
 
-    
-    
+   
 
 }

@@ -23,7 +23,6 @@ public class HomeController {
     //private final Logger logger = LoggerFactory.getLogger(HomeController.class);
     @Autowired
     AnkietaService ankietaService;
-    
 
     @RequestMapping("/")
     public String przykladModelu(Model model) {
@@ -31,12 +30,18 @@ public class HomeController {
         model.addAttribute("message", "To jest jakaś super informacja");
 
         Ankieta ankieta = new Ankieta();
-        ankieta.setName("Adam");
-        Pytanie pytanie = new Pytanie();
-        pytanie.setAnkieta(ankieta);
-        ankieta.getPytania().add(pytanie);
-        
+        ankieta.setName("Ankieta");
+
+        for (int i = 0; i < 10; i++) {
+            Pytanie pytanie = new Pytanie();
+            pytanie.setName("pytanie" + i);
+            pytanie.setAnkieta(ankieta);
+            ankieta.getPytania().add(pytanie);
+        }
+
         ankietaService.save(ankieta);
+        
+        model.addAttribute("ankieta", ankieta);
 
         //emailService.sendTextEmail("ryszard693@gmail.com", "temat", "wiadomosc");
         return "home";

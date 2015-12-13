@@ -29,15 +29,13 @@ public class Ankieta implements Serializable {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="ankieta")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ankieta")
     private List<Pytanie> pytania;
 
     public Ankieta() {
         pytania = new ArrayList<>();
     }
 
-    
-    
     /**
      * Get the value of pytania
      *
