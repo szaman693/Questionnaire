@@ -33,6 +33,9 @@
     <context:annotation-config /> <!-- To na przyszłość, pozwoli nam korzystać z adnotacji także w klasach, które byśmy skonfigurowali ręcznie -->
     <mvc:annotation-driven />
     
+    <mvc:resources mapping="resources/**" location="/resources/"  
+	cache-period="31556926"/>
+    
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/WEB-INF/views/</value>

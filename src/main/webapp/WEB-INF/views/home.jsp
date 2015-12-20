@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%-- 
     Document   : home
@@ -8,11 +9,28 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+    <head>      
+        <spring:url value="/resources/css/questionnairecss.css" var="mainCss" />
+        <link href="${mainCss}" rel="stylesheet" />        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        
+
+        <title>JSP Page</title>       
+
+        <script>
+
+
+            $(function () {
+                $("table tr:odd(even)").addClass("striped");
+            });
+
+
+        </script>
+
     </head>
+
     <body>
 
         <c:if test="${not empty message}">
@@ -43,6 +61,5 @@
 
         </table>
 
-
-</body>
+    </body>
 </html>
